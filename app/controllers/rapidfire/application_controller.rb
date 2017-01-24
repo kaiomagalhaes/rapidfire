@@ -4,7 +4,7 @@ module Rapidfire
 
     def authenticate_administrator!
       unless can_administer?
-        raise Rapidfire::AccessDenied.new("cannot administer questions")
+        raise Rapidfire::AccessDenied, 'cannot administer questions'
       end
     end
   end

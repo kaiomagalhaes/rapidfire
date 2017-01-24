@@ -12,9 +12,9 @@ describe Rapidfire::AttemptsController do
     it 'initializes answer builder with empty args' do
       survey = FactoryGirl.create(:survey)
 
-      expect {
+      expect do
         post :create, survey_id: survey.id
-      }.not_to raise_error
+      end.not_to raise_error
     end
   end
 end

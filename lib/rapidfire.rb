@@ -1,4 +1,4 @@
-require "rapidfire/engine"
+require 'rapidfire/engine'
 
 module Rapidfire
   class AccessDenied < StandardError

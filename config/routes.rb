@@ -7,5 +7,5 @@ Rapidfire::Engine.routes.draw do
     resources :attempts, only: [:new, :create]
   end
 
-  root :to => "surveys#index"
+  root to: 'surveys#index'
 end

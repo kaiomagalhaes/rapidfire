@@ -13,20 +13,19 @@ module Rapidfire
 
     def save!(options = {})
       params.each do |question_id, answer_attributes|
-        if answer = @attempt.answers.find { |a| a.question_id.to_s == question_id.to_s }
-          text = answer_attributes[:answer_text]
+        next unless answer = @attempt.answers.find { |a| a.question_id.to_s == question_id.to_s }
+        text = answer_attributes[:answer_text]
 
-          # in case of checkboxes, values are submitted as an array of
-          # strings. we will store answers as one big string separated
-          # by delimiter.
-          answer.answer_text =
-            if text.is_a?(Array)
-              stripped_answers = strip_checkbox_answers(text)
-              stripped_answers.join(Rapidfire.answers_delimiter)
-            else
-              text
-            end
-        end
+        # in case of checkboxes, values are submitted as an array of
+        # strings. we will store answers as one big string separated
+        # by delimiter.
+        answer.answer_text =
+          if text.is_a?(Array)
+            stripped_answers = strip_checkbox_answers(text)
+            stripped_answers.join(Rapidfire.answers_delimiter)
+          else
+            text
+          end
       end
 
       @attempt.save!(options)
@@ -43,6 +42,7 @@ module Rapidfire
     end
 
     private
+
     def build_attempt
       @attempt = Attempt.new(user: user, survey: survey)
       @answers = @survey.questions.collect do |question|
@@ -51,7 +51,7 @@ module Rapidfire
     end
 
     def strip_checkbox_answers(text)
-      text.reject(&:blank?).reject { |t| t == "0" }
+      text.reject(&:blank?).reject { |t| t == '0' }
     end
   end
 end

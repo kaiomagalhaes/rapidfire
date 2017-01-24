@@ -1,11 +1,9 @@
 module Rapidfire
   class Survey < ActiveRecord::Base
-    has_many  :questions
+    has_many :questions
     belongs_to :survey_setting
-    validates :name, :presence => true
+    validates :name, presence: true
 
-    if Rails::VERSION::MAJOR == 3
-      attr_accessible :name
-    end
+    attr_accessible :name if Rails::VERSION::MAJOR == 3
   end
 end

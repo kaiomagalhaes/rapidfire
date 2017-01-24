@@ -1,11 +1,11 @@
 module Rapidfire
   class Question < ActiveRecord::Base
-    belongs_to :survey, :inverse_of => :questions
+    belongs_to :survey, inverse_of: :questions
     has_many   :answers
 
     default_scope { order(:position) }
 
-    validates :survey, :question_text, :presence => true
+    validates :survey, :question_text, presence: true
     serialize :validation_rules
 
     if Rails::VERSION::MAJOR == 3
@@ -29,9 +29,7 @@ module Rapidfire
     # answer will delegate its validation to question, and question
     # will inturn add validations on answer on the fly!
     def validate_answer(answer)
-      if rules[:presence] == "1"
-        answer.validates_presence_of :answer_text
-      end
+      answer.validates_presence_of :answer_text if rules[:presence] == '1'
 
       if rules[:minimum].present? || rules[:maximum].present?
         min_max = { minimum: rules[:minimum].to_i }

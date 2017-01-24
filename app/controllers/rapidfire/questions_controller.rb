@@ -3,28 +3,28 @@ module Rapidfire
     before_filter :authenticate_administrator!
 
     before_filter :find_survey!
-    before_filter :find_question!, :only => [:edit, :update, :destroy]
+    before_filter :find_question!, only: [:edit, :update, :destroy]
 
     def index
       @questions = @survey.questions
     end
 
     def new
-      @question_form = QuestionForm.new(:survey => @survey)
+      @question_form = QuestionForm.new(survey: @survey)
     end
 
     def create
-      form_params = question_params.merge(:survey => @survey)
+      form_params = question_params.merge(survey: @survey)
 
       save_and_redirect(form_params, :new)
     end
 
     def edit
-      @question_form = QuestionForm.new(:question => @question)
+      @question_form = QuestionForm.new(question: @question)
     end
 
     def update
-      form_params = question_params.merge(:question => @question)
+      form_params = question_params.merge(question: @question)
 
       save_and_redirect(form_params, :edit)
     end

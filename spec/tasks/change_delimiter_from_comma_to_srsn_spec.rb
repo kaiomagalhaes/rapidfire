@@ -2,7 +2,6 @@ require 'spec_helper'
 require 'rake'
 load File.expand_path('../../../lib/tasks/change_delimiter_to_srsn.rake', __FILE__)
 
-
 describe 'rapidfire:change_delimiter_from_comma_to_srsn' do
   before do
     Rake::Task.define_task(:environment)
@@ -11,11 +10,11 @@ describe 'rapidfire:change_delimiter_from_comma_to_srsn' do
   it 'converts select,radio and checkbox answer options delimiter from , to \r\n' do
     survey = FactoryGirl.create(:survey)
     q_checkbox = FactoryGirl.create(:q_checkbox, survey: survey,
-                                    answer_options: 'one,two,three')
+                                                 answer_options: 'one,two,three')
     q_radio = FactoryGirl.create(:q_radio, survey: survey,
-                                 answer_options: 'hello,world')
+                                           answer_options: 'hello,world')
     q_select = FactoryGirl.create(:q_select, survey: survey,
-                                  answer_options: 'new,old,historic,')
+                                             answer_options: 'new,old,historic,')
 
     q_date = FactoryGirl.create(:q_date, survey: survey)
     q_long = FactoryGirl.create(:q_long, survey: survey)

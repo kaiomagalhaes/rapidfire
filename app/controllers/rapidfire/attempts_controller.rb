@@ -17,6 +17,7 @@ module Rapidfire
     end
 
     private
+
     def find_survey!
       @survey = Survey.find(params[:survey_id])
     end

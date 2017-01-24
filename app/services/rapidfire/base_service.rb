@@ -7,12 +7,16 @@ module Rapidfire
       include ActiveModel::Conversion
       include ActiveModel::Validations
 
-      def persisted; false end
+      def persisted
+        false
+      end
 
-      def initialize(params={})
-        params.each do |attr, value|
-          self.public_send("#{attr}=", value)
-        end if params
+      def initialize(params = {})
+        if params
+          params.each do |attr, value|
+            public_send("#{attr}=", value)
+          end
+        end
 
         super()
       end

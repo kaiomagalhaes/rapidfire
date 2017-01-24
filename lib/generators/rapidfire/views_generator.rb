@@ -15,6 +15,7 @@ module Rapidfire
       end
 
       protected
+
       def view_directory(name)
         directory name.to_s, "app/views/rapidfire/#{name}"
       end

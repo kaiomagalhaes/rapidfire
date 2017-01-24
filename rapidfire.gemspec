@@ -1,4 +1,4 @@
-$:.push File.expand_path('../lib', __FILE__)
+$LOAD_PATH.push File.expand_path('../lib', __FILE__)
 
 require 'rapidfire/version'
 
@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.email       = ['yuva@codemancers.com']
   s.homepage    = 'https://github.com/code-mancers/rapidfire'
   s.summary     = 'Surveys made easy.'
-  s.description = 'One stop solution for all survey related requirements! Its tad easy!.'
+  s.description = 'One stop solution for all survey related requirements!Its tad easy!.'
 
   s.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md']
   s.test_files = Dir['spec/**/*']

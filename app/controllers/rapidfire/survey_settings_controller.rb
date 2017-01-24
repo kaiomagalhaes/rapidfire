@@ -9,7 +9,7 @@ module Rapidfire
     def edit
       @survey_setting = SurveySetting.find(params[:id])
     end
-    
+
     # In this case I will not be returning to the index of Survey_Setting,
     # since there is no index of Survey_Setting
     def create
@@ -29,7 +29,7 @@ module Rapidfire
 
     def update
       @survey_setting = SurveySetting.find(params[:id])
-      
+
       if @survey_setting.update(survey_setting_params)
         redirect_to surveys_path, notice: 'Survey setting was successfully updated.'
       else
@@ -43,12 +43,13 @@ module Rapidfire
     end
 
     private
-      def set_survey_setting
-        @survey_setting = SurveySetting.find(params[:id])
-      end
 
-      def survey_setting_params
-        params.require(:survey_setting).permit(:title)
-      end
+    def set_survey_setting
+      @survey_setting = SurveySetting.find(params[:id])
+    end
+
+    def survey_setting_params
+      params.require(:survey_setting).permit(:title)
+    end
   end
 end

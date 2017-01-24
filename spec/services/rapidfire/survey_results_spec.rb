@@ -59,5 +59,4 @@ describe Rapidfire::SurveyResults do
       expect(answers.results).to be_a(Array)
     end
   end
-
 end

@@ -1,4 +1,3 @@
 Rails.application.routes.draw do
-
-  mount Rapidfire::Engine => "/rapidfire"
+  mount Rapidfire::Engine => '/rapidfire'
 end

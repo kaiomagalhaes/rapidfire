@@ -6,10 +6,8 @@ module Rapidfire
     else
       belongs_to :user, polymorphic: true
     end
-    has_many   :answers, inverse_of: :attempt, autosave: true
+    has_many :answers, inverse_of: :attempt, autosave: true
 
-    if Rails::VERSION::MAJOR == 3
-      attr_accessible :survey, :user
-    end
+    attr_accessible :survey, :user if Rails::VERSION::MAJOR == 3
   end
 end
