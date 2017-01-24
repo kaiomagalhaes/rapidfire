@@ -11,6 +11,7 @@
       <li><%= link_to "Answer Questions", new_survey_attempt_path(survey) %></li>
       <% if can_administer? %>
         <li><%= link_to "Results", [:results, survey] %></li>
+        <li><%= link_to "Customize", edit_survey_setting_url(survey.survey_setting) %></li>
         <li><%= link_to "Delete", survey, method: :delete %></li>
       <% end %>
     </ul>
