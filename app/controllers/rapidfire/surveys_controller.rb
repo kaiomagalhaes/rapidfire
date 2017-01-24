@@ -12,9 +12,10 @@ module Rapidfire
 
     def create
       @survey = Survey.new(survey_params)
+      @survey.survey_setting = SurveySetting.create!
       if @survey.save
         respond_to do |format|
-          format.html { redirect_to surveys_path }
+          format.html { redirect_to edit_survey_setting_url(@survey.survey_setting) }
           format.js
         end
       else
