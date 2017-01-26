@@ -1,5 +1,5 @@
 Rapidfire::Engine.routes.draw do
-  resources :survey_settings, except: [:index, :show]
+  resources :survey_settings, except: [:index, :show, :new]
   resources :surveys do
     get 'results', on: :member
 

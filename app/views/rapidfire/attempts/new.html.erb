@@ -1,12 +1,26 @@
-<% provide(:title, @survey.survey_setting.title) %>
-<h2>Please answer these Questions</h2>
+<% provide(:title, @survey.name) %>
+<h2 id="survey_title">Please answer these Questions</h2>
 <hr/>
 
 <%= form_for([@survey, @attempt_builder]) do |f| %>
   <%- @attempt_builder.answers.each do |answer| %>
-    <%= f.fields_for("#{answer.question.id}", answer) do |answer_form| %>
+    <%= f.fields_for("#{answer.question.id}",  answer) do |answer_form| %>
       <%= render_answer_form_helper(answer, answer_form) %>
     <% end %>
   <% end %>
   <%= f.submit "Save" %>
 <% end %>
+
+<style>
+  body {
+    background-color: <%= @survey.survey_setting.background_color %>;
+  }
+
+  #survey_title {
+    color: <%= @survey.survey_setting.title_color %>;
+  }
+
+  .survey_question {
+    color: <%= @survey.survey_setting.question_color %>;
+  }
+</style>

@@ -2,10 +2,6 @@ module Rapidfire
   class SurveySettingsController < Rapidfire::ApplicationController
     before_filter :authenticate_administrator!
 
-    def new
-      @survey_setting = SurveySetting.new
-    end
-
     def edit
       @survey_setting = SurveySetting.find(params[:id])
     end
@@ -49,7 +45,8 @@ module Rapidfire
     end
 
     def survey_setting_params
-      params.require(:survey_setting).permit(:title)
+      params.require(:survey_setting).permit(:background_color, :title_color,
+                                             :question_color)
     end
   end
 end
